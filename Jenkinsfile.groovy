@@ -16,18 +16,16 @@ def getBuildType() {
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK-1.8.0'
-    }
+    stages {
+        stage('Assemble') {
+            steps {
+                echo "Building AAR files-------"
+                // Finish building and packaging the AAR
+                script {
+                    sh "./gradlew clean assemble${getBuildType()}"
 
-    stage('Assemble') {
-                steps {
-                    echo "Building AAR files-------"
-                    // Finish building and packaging the AAR
-                    script {
-                        sh "./gradlew clean assemble${getBuildType()}"
-
-                    }
                 }
-          }
+            }
+        }
+    }
 }
