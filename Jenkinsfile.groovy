@@ -16,6 +16,10 @@ def getBuildType() {
 pipeline {
     agent any
 
+    tools {
+        jdk 'JDK-1.8.0'
+    }
+
     stages {
         stage('Assemble') {
             steps {
